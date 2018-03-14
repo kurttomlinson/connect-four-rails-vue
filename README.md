@@ -8,6 +8,6 @@ The game Connect Four written in Rails and Vue
 
 # Heroku
 Run
-`heroku buildpacks:add heroku/nodejs -a connect-four-rails-vue`
-`heroku buildpacks:add heroku/ruby -a connect-four-rails-vue`
-where "connect-four-rails-vue" is the Heroku app name.
+`heroku buildpacks:add heroku/nodejs
+`heroku buildpacks:add heroku/ruby
+`heroku buildpacks:add https://github.com/dmathieu/heroku-buildpack-submodules`.
