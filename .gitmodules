@@ -1,3 +1,0 @@
-[submodule "app/models/console-connect-four"]
-	path = app/models/console-connect-four
-	url = https://github.com/kurttomlinson/console-connect-four.git
