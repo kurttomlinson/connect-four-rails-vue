@@ -51,3 +51,6 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # Use webpack for Vue and other JS stuff
 gem 'webpacker', '~> 3.3'
+
+# Use Figaro to store secrets
+gem 'figaro', '~> 1.1', '>= 1.1.1'
