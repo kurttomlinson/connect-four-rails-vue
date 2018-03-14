@@ -1,0 +1,3 @@
+[submodule "lib/console-connect-four"]
+	path = lib/console-connect-four
+	url = https://github.com/kurttomlinson/console-connect-four.git
