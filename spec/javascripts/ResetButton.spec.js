@@ -12,11 +12,8 @@ describe('ResetButton.vue', () => {
   it('emits a "resetGame" event when clicked', () => {
     const stub = jest.fn()
     wrapper.vm.$on('resetGame', stub)
-    const button = wrapper.find('button')
-    button.trigger('click')
-    // Vue.nextTick(function () {
-      expect(stub).toBeCalled()
-    // })
+    wrapper.find('button').trigger('click')
+    expect(stub).toBeCalled()
   })
 
   it('has the expected html structure', () => {
