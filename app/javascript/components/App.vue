@@ -12,18 +12,9 @@
         @playerSelected="playerSelected" />
     </div>
     <br/>
-    <div class="centered">
-      <label for="search-depth-selector">Search depth:</label>
-      <select
-        id="search-depth-selector"
-        v-model="searchDepth">
-        <option>1</option>
-        <option>2</option>
-        <option selected>3</option>
-        <option>4</option>
-        <option>5</option>
-      </select>
-    </div>
+    <SearchDepthSelector
+      :searchDepth="searchDepth"
+      @setSearchDepth="setSearchDepth"/>
     <br/>
     <div class="centered">Player to move: {{ playerToMove }}</div>
     <MoveInput
@@ -52,10 +43,11 @@ import GameBoard from './GameBoard.vue'
 import MoveInput from './MoveInput.vue'
 import ResetButton from './ResetButton.vue'
 import GameResult from './GameResult.vue'
+import SearchDepthSelector from './SearchDepthSelector.vue'
 
 export default {
 	components: {
-		PlayerSelector, GameBoard, MoveInput, ResetButton, GameResult
+		PlayerSelector, GameBoard, MoveInput, ResetButton, GameResult, SearchDepthSelector
 	},
   data () {
     return {
@@ -91,6 +83,9 @@ export default {
     }
   },
   methods: {
+    setSearchDepth: function (searchDepth) {
+      this.searchDepth = searchDepth
+    },
     move: function (move_column) {
       this.moves.push(move_column)
       this.playerToMove = (this.playerToMove == 1) ? 2 : 1
