@@ -34,7 +34,7 @@
     <p>The search depth determines how many moves into the future the computer should look before picking a move. Higher search depths make the computer a more difficult opponent.</p>
     <p>Click the "Reset" button at any time to clear the game board and start over.</p>
     <h2>About</h2>
-    <p><a href="https://github.com/kurttomlinson/connect-four-rails-vue">Connect Four Rails Vue</a>, written by <a href="https://kurttomlinson.com">Kurt Tomlinson</a> is built using Ruby on Rails and Vue.js. The Ruby on Rails backend computes the moves made by computer players and determines if a given sequence of moves corresponds with an end-game state (tie game, player one wins, player two wins) or an on-going game.</p>
+    <p><a href="https://github.com/kurttomlinson/connect-four-rails-vue">connect-four-rails-vue</a>, written by <a href="https://kurttomlinson.com">Kurt Tomlinson</a> is built using Ruby on Rails and Vue.js. The Ruby on Rails backend computes the moves made by computer players and determines if a given sequence of moves corresponds with an end-game state (tie game, player one wins, player two wins) or an on-going game.</p>
     <p>The Ruby on Rails backend leverages <a href="https://github.com/kurttomlinson/console-connect-four">console-connect-four</a>, also written by Kurt Tomlinson, to calculate computer moves and game results. The <strong>console-connect-four</strong> source code is included in the <strong>connect-four-rails-vue</strong> project as a git submodule.</p>
     <h2>Future Work</h2>
     <p>Although <strong>connect-four-rails-vue</strong> is in a working state, there are a few improvements I'd like to make in the future.</p>
