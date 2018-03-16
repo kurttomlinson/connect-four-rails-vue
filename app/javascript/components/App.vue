@@ -5,11 +5,11 @@
       <PlayerSelector
         :player=1
         :playerType="playerOneType"
-        @playerSelected="playerSelected" />
+        @setPlayerType="setPlayerType" />
       <PlayerSelector
         :player=2
         :playerType="playerTwoType"
-        @playerSelected="playerSelected" />
+        @setPlayerType="setPlayerType" />
     </div>
     <br/>
     <SearchDepthSelector
@@ -104,7 +104,7 @@ export default {
       this.gameResult = 'incomplete'
       this.movesAllowed = true
     },
-    playerSelected: function (player, type) {
+    setPlayerType: function (player, type) {
       if (player == 1) {
         this.playerOneType = type
       } else if (player == 2) {

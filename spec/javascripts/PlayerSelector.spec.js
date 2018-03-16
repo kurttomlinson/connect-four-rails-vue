@@ -14,16 +14,16 @@ describe('PlayerSelector.vue', () => {
     })
   })
 
-  it('emits a "playerSelected" event when "computer" is picked', () => {
+  it('emits a "setPlayerType" event when "computer" is picked', () => {
     const stub = jest.fn()
-    wrapper.vm.$on('playerSelected', stub)
+    wrapper.vm.$on('setPlayerType', stub)
     wrapper.find('#player1computer').trigger('click')
     expect(stub).toBeCalledWith(1, 'computer')
   })
 
-  it('emits a "playerSelected" event when "human" is picked', () => {
+  it('emits a "setPlayerType" event when "human" is picked', () => {
     const stub = jest.fn()
-    wrapper.vm.$on('playerSelected', stub)
+    wrapper.vm.$on('setPlayerType', stub)
     wrapper.find('#player1computer').trigger('click')
     wrapper.find('#player1human').trigger('click')
     expect(stub).toBeCalledWith(1, 'human')

@@ -42,7 +42,7 @@ export default {
   },
   methods: {
     radioButtonClick (e, l) {
-      this.$emit('playerSelected', this.player, e.target.value)
+      this.$emit('setPlayerType', this.player, e.target.value)
     }
   },
   computed: {
