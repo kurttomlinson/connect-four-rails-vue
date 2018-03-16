@@ -1,21 +1,142 @@
 <template>
   <div>
-    Hello from Vue!
+    <h1 class="centered">Connect Four in Ruby on Rails and Vue</h1>
+    <div class="player-selector-container">
+      <PlayerSelector
+        :player=1
+        :playerType="playerOneType"
+        @playerSelected="playerSelected" />
+      <PlayerSelector
+        :player=2
+        :playerType="playerTwoType"
+        @playerSelected="playerSelected" />
+    </div>
+    <br/>
+    <div class="centered">
+      <label for="search-depth-selector">Search depth:</label>
+      <select
+        id="search-depth-selector"
+        v-model="searchDepth">
+        <option>1</option>
+        <option>2</option>
+        <option>3</option>
+        <option selected>4</option>
+        <option>5</option>
+      </select>
+    </div>
+    <br/>
+    <div class="centered">Player to move: {{ playerToMove }}</div>
+    <MoveInput
+      :moves=moves
+      :movesAllowed=movesAllowed
+      :gameResult=gameResult
+      :currentPlayerType=currentPlayerType
+      @move="move" />
+    <GameBoard
+      :moves=moves />
+    <GameResult
+      :gameResult=gameResult /><br/>
+    <ResetButton
+      @resetGame=resetGame />
+    <h2>Instructions</h2>
+    <p>The search depth determines how many moves into the future the computer should look before picking a move. Higher search depths make the computer a more difficult opponent.</p>
+    <p>When it is a human's turn to play, click one of the buttons labeled "0" through "6" to pick a column for your move.</p>
+    <p>Click the "Reset" button at any time to clear the game board and start over.</p>
   </div>
 </template>
 
 <script>
 import axios from 'axios';
+import PlayerSelector from './PlayerSelector.vue'
+import GameBoard from './GameBoard.vue'
+import MoveInput from './MoveInput.vue'
+import ResetButton from './ResetButton.vue'
+import GameResult from './GameResult.vue'
 
 export default {
+	components: {
+		PlayerSelector, GameBoard, MoveInput, ResetButton, GameResult
+	},
   data () {
     return {
-      moves: []
+      moves: [],
+      playerOneType: "human",
+      playerTwoType: "human",
+      playerToMove: 1,
+      gameResult: 'incomplete',
+      movesAllowed: true,
+      searchDepth: 4
     }
   },
-  props: { gameId: null }
+  updated: function () {
+    if ((this.movesAllowed) && (this.gameResult == 'incomplete')) {
+      if (this.currentPlayerType == 'computer') {
+        this.movesAllowed = false
+        const computerMoveUrl = "/games/computer_move.json?moves=" + this.moves.toString() + "&depth=" + this.searchDepth
+        axios.get(computerMoveUrl).then(response => {
+          if (this.arraysAreEqual(this.moves, response.data.moves)) {
+            this.move(response.data.computer_move)
+          }
+        })
+      }
+    }
+  },
+  computed: {
+    currentPlayerType: function () {
+      if (this.playerToMove == 1) {
+        return this.playerOneType
+      } else {
+        return this.playerTwoType
+      }
+    }
+  },
+  methods: {
+    move: function (move_column) {
+      this.moves.push(move_column)
+      this.playerToMove = (this.playerToMove == 1) ? 2 : 1
+      const gameResultUrl = "/games/game_result.json?moves=" + this.moves.toString()
+      this.movesAllowed = false
+      axios.get(gameResultUrl).then(response => {
+        this.gameResult = response.data.game_result
+        if (this.gameResult == 'incomplete') {
+          this.movesAllowed = true
+        }
+      })
+    },
+    resetGame: function () {
+      this.moves = []
+      this.playerToMove = 1
+      this.gameResult = 'incomplete'
+      this.movesAllowed = true
+    },
+    playerSelected: function (player, type) {
+      if (player == 1) {
+        this.playerOneType = type
+      } else if (player == 2) {
+        this.playerTwoType = type
+      }
+    },
+    arraysAreEqual: function (arrayA, arrayB) {
+      if (arrayA.length != arrayB.length) {
+        return false
+      }
+      for (let i = 0; i < arrayA.length; i++) {
+        if (arrayA[i] != arrayB[i]) {
+          return false
+        }
+      }
+      return true;
+    }
+  }
 }
 </script>
 
 <style scoped>
+.centered {
+  text-align: center
+}
+.player-selector-container {
+  justify-content: space-around;
+  display: flex;
+}
 </style>
