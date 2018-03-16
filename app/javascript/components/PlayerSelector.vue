@@ -22,9 +22,6 @@
 </template>
 
 <script>
-import axios from 'axios';
-// var $ = require('jquery');
-// require('bootstrap');
 
 export default {
   props: {
