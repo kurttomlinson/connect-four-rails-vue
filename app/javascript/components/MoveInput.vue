@@ -39,11 +39,6 @@ export default {
       }
     }
   },
-  methods: {
-    radioButtonClick (playerType) {
-      this.$emit('playerSelected', player, playerType)
-    }
-  },
   computed: {
     validMoves: function () {
       if ((this.currentPlayerType == 'human') && (this.movesAllowed) && (this.gameResult == 'incomplete')) {
