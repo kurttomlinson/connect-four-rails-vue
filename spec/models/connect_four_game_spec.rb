@@ -19,7 +19,7 @@ RSpec.describe 'ConnectFourGame#game_result' do
                                 5,6,5,6,5,6])
     expect(game.game_result).to eq ConnectFourConstants::TIE
   end
-  it 'returns "incomplete" when the game is a in progress' do
+  it 'returns "incomplete" when the game is still in progress' do
     game = ConnectFourGame.new([0,1])
     expect(game.game_result).to eq 'incomplete'
   end
