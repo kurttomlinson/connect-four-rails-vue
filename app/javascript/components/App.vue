@@ -57,7 +57,7 @@ export default {
       playerToMove: 1,
       gameResult: 'incomplete',
       movesAllowed: true,
-      searchDepth: 4
+      searchDepth: 3
     }
   },
   updated: function () {

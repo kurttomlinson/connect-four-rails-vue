@@ -4,17 +4,19 @@
     <select
       id="search-depth-selector"
       @change="setSearchDepth">
-      <option>1</option>
-      <option>2</option>
-      <option selected>3</option>
-      <option>4</option>
-      <option>5</option>
+      <template v-for="depth in [1,2,3,4,5]">
+        <template v-if="depth == searchDepth">
+          <option :key="depth" selected>{{ depth }}</option>
+        </template>
+        <template v-else>
+          <option :key="depth">{{ depth }}</option>
+        </template>
+      </template>
     </select>
   </div>
 </template>
 
 <script>
-
 export default {
   props: {
     searchDepth: {
