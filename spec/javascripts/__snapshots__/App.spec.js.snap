@@ -1,0 +1,56 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App.vue has the expected html structure 1`] = `
+<div>
+  <h1
+    class="centered"
+  >
+    Connect Four in Ruby on Rails and Vue
+  </h1>
+   
+  <div
+    class="player-selector-container"
+  >
+    <!---->
+     
+    <!---->
+  </div>
+   
+  <br />
+   
+  <!---->
+   
+  <br />
+   
+  <div
+    class="centered"
+  >
+    Player to move: 1
+  </div>
+   
+  <!---->
+   
+  <!---->
+   
+  <!---->
+  <br />
+   
+  <!---->
+   
+  <h2>
+    Instructions
+  </h2>
+   
+  <p>
+    The search depth determines how many moves into the future the computer should look before picking a move. Higher search depths make the computer a more difficult opponent.
+  </p>
+   
+  <p>
+    When it is a human's turn to play, click one of the buttons labeled "0" through "6" to pick a column for your move.
+  </p>
+   
+  <p>
+    Click the "Reset" button at any time to clear the game board and start over.
+  </p>
+</div>
+`;
