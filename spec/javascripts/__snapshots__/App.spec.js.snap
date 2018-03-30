@@ -42,11 +42,11 @@ exports[`App.vue has the expected html structure 1`] = `
   </h2>
    
   <p>
-    The search depth determines how many moves into the future the computer should look before picking a move. Higher search depths make the computer a more difficult opponent.
+    When it is a human's turn to play, click one of the buttons labeled "0" through "6" to pick a column for your move.
   </p>
    
   <p>
-    When it is a human's turn to play, click one of the buttons labeled "0" through "6" to pick a column for your move.
+    The search depth determines how many moves into the future the computer should look before picking a move. Higher search depths make the computer a more difficult opponent.
   </p>
    
   <p>
@@ -61,7 +61,13 @@ exports[`App.vue has the expected html structure 1`] = `
     <a
       href="https://github.com/kurttomlinson/connect-four-rails-vue"
     >
-      Connect Four Rails Vue
+      connect-four-rails-vue
+    </a>
+    , written by 
+    <a
+      href="https://kurttomlinson.com"
+    >
+      Kurt Tomlinson
     </a>
      is built using Ruby on Rails and Vue.js. The Ruby on Rails backend computes the moves made by computer players and determines if a given sequence of moves corresponds with an end-game state (tie game, player one wins, player two wins) or an on-going game.
   </p>
@@ -73,7 +79,7 @@ exports[`App.vue has the expected html structure 1`] = `
     >
       console-connect-four
     </a>
-     to calculate computer moves and game results. The 
+    , also written by Kurt Tomlinson, to calculate computer moves and game results. The 
     <strong>
       console-connect-four
     </strong>
@@ -101,7 +107,11 @@ exports[`App.vue has the expected html structure 1`] = `
     <strong>
       games
     </strong>
-     table in the database with a string column named 'moves'. I'd use 
+     table in the database with a string column named 
+    <strong>
+      moves
+    </strong>
+    . I'd use 
     <strong>
       serialize :moves, Array
     </strong>
